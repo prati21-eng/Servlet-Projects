@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Student Registration form</title>
+<link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+
+	<form action="validationurl" method="post" onsubmit="return validateUrl(this)">
+	
+		<h1>Register Here</h1>
+		<input type="hidden" name="hiddenflag" value="no">
+		
+		<label for ="std_name">Enter Your Name :</label>
+		<input type="text" name ="std_name"><span id = "nameerr" style="color:red"></span><br><br>
+		
+		<label for = "std_email">Enter Your Email Address:</label>
+		<input type="email" name="std_email"><span id = "emailerr" style="color:red"></span><br><br>
+		
+		<label for="std_mobile">Enter Your Mobile Number :</label>
+		<input type="text" name="std_mobile"><span id = "moberr" style="color:red"></span><br><br>
+		
+		
+		<input type="submit" value="Register">
+	</form>
+	
+	<script type="text/javascript">
+
+	function validateUrl(frm)
+	{
+		let stud_name=frm.std_name.value.trim();
+		let stud_email=frm.std_email.value.trim();
+		let stud_mob=frm.std_mobile.value.trim();
+		
+		document.getElementById("nameerr").innerHTML="";
+		document.getElementById("emailerr").innerHTML="";
+		document.getElementById("moberr").innerHTML="";
+		let flag=true;
+		if(stud_name==" " || stud_name.length==0)
+			{
+				//alert("Name is Invalid");
+				document.getElementById("nameerr").innerHTML="Name is Required";
+				flag=false;
+				frm.hiddenflag.value="yes"
+				frm.std_name.focus()
+			}
+		else if(stud_email==" " || stud_email.length==0)
+			{
+				//alert("Email is invalid");
+				document.getElementById("emailerr").innerHTML="Email is required";
+				flag=false;
+				frm.hiddenflag.value="yes"
+				frm.std_email.focus();
+			}
+		else if(stud_mob==" " ||stud_mob.length != 10 || isNaN(stud_mob))
+			{
+				//alert("Mobile Number is invalid")
+				document.getElementById("moberr").innerHTML="Mobile Number is invalid";
+				flag=false;
+				frm.hiddenflag.value="yes"
+				frm.std_mobile.focus();
+			}
+		frm.hiddenflag.value="yes"
+		return flag;
+	}
+	</script>
+</body>
+</html>
