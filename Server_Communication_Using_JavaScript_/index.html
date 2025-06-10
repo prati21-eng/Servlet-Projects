@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+</head>
+<body>
+	<h1>Server Communication using javascript</h1>
+	<form name="frm1" action="countryappurl" method="get">
+		<label for="country">Select Country</label><br>
+		<select name="country" onchange="fun()">
+		<option value="-1" selected>Select</option>
+		<option value="0">India</option>
+		<option value="1">Pakistan</option>
+		<option value="2">ShriLanka</option>
+		<option value="3">England</option>
+		</select>
+	</form>
+	
+	<script language="JavaScript">
+		function fun()
+		{
+			frm1.submit();
+		}
+	</script>
+</body>
+</html>
