@@ -1,0 +1,61 @@
+package com.technorbit.servler_config.example;
+
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class StudentRegistrationServlet {
+
+	public void doPost(HttpServletRequest req, HttpServletResponse res)
+	{
+		String name=req.getParameter("name");
+		int roll=Integer.parseInt(req.getParameter("roll"));
+		String addr=req.getParameter("addr");
+		
+		try
+		{
+			PrintWriter pw=res.getWriter();
+			res.setContentType("text/html");
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			
+			Connection con=DriverManager.getConnection("jdbc:mysql://localhost:3306/student_data", "root", "Pass@123");
+			String sql="insert into student_info(name,rollNumber,address) values(?,?,?)";
+			
+			if(con!=null)
+			{
+				pw.println("Connected");
+			}
+			else
+			{
+				pw.println("not Connected");
+			}
+			
+			PreparedStatement ps=con.prepareStatement(sql);
+			
+			ps.setString(1,name);
+			ps.setString(3,addr);
+			ps.setInt(2, roll);
+			int n=ps.executeUpdate();
+			
+			if(n>0)
+			{
+				
+				pw.println("Registration Successfull");
+			}
+			else
+			{
+				pw.println("Something went wrong");
+			}
+			
+		}
+		catch(Exception e)
+		{
+			e.printStackTrace();
+		}
+	}
+
+}
