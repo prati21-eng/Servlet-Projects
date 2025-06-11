@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiple Links Handling</title>
+</head>
+<body>
+    <h1>Click one of the link from the following</h1>
+
+    <a href="multiplelinksurl">Printing the Countries</a><br>
+    <a href="">Printing the Languages</a><br>
+    <a href="">Printing the Locale time</a><br>
+</body>
+</html>

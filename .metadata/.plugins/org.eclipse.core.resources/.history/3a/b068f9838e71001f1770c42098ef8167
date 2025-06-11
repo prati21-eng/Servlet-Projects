@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Example for investing Servlet Config</title>
+</head>
+<body>
+	<form action="" method="post">
+		<h1>Search Student</h1>
+		<label for ="roll">Enter Roll Number :</label>
+		<input type="text" name="roll" id="roll"><br><br>
+		<input type="submit" value="Search">
+	</form>
+</body>
+</html>

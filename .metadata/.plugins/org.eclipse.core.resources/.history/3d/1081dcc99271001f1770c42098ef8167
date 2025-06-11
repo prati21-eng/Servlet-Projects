@@ -1,0 +1,5 @@
+package com.technorbit.servler_config.example;
+
+public class StudentRegistrationServlet {
+
+}

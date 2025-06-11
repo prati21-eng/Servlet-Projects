@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Serching</title>
+</head>
+<body>
+    <form action="" method="post">
+
+        <h2>Enter Data to find</h2>
+        <table>
+            <tr><td>Enter Roll Number</td>
+            <td><input type="text" name="roll" id="roll"></td>
+            <td><input type="submit" value="search"></td>
+            </tr>
+        </table>
+    </form>
+</body>
+</html>

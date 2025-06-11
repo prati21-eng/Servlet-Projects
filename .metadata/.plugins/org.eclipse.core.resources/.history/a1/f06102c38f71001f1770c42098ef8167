@@ -1,0 +1,59 @@
+ package com.technorbit.servler_config.example;
+
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.servlet.ServletConfig;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class SearchStudentServlet extends HttpServlet {
+	@Override
+	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+		
+		ServletConfig cfg=getServletConfig();
+		String driver=cfg.getInitParameter("driver");
+		String url=cfg.getInitParameter("url");
+		String user=cfg.getInitParameter("user");
+		String pass=cfg.getInitParameter("password");
+		int id=(Integer.parseInt(req.getParameter("id")));
+		
+		try
+		{
+			PrintWriter pw=resp.getWriter();
+			resp.setContentType("text/html");
+			Class.forName(driver);
+			Connection con=DriverManager.getConnection(url,user,pass);
+			String sql="select * from student_info where rollNumber=?";
+			PreparedStatement ps=con.prepareStatement(sql);
+			ps.setInt(1, id);
+			ResultSet rs=ps.executeQuery();
+			
+			if(rs.next())
+			{
+				pw.println(rs.getString(1)+"<br>");
+				pw.println(rs.getInt(2));
+				pw.println(rs.getString(3));
+			}
+			else
+			{
+				pw.println("<h2>Data Not Found<h2>");
+			}
+		}
+		catch(ClassNotFoundException cnfe)
+		{
+			cnfe.printStackTrace();
+		}
+		catch(SQLException se)
+		{
+			se.printStackTrace();
+		}
+	}
+}

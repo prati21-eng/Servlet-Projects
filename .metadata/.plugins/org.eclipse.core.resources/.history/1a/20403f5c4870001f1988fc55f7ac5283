@@ -1,0 +1,5 @@
+package com.technorbit.dbconnection.servlet;
+
+public class SearchStudent {
+
+}

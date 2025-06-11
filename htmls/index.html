@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arithmetic Operations using multiple Buttons</title>
+</head>
+<body>
+    <form action="arithmeticoperationurl" method="post" onsubmit="return validateData(this)">
+        <h2>Arithmetic Operations</h2>
+
+        <label for="num1">Enter First Number :</label>
+        <input type="text" name="num1" id="num1"><span id="num1err" style="color: red;"></span><br><br>
+
+        <label for="num2">Enter Second Number :</label>
+        <input type="text" name="num2" id="num2"><span id="num2err" style="color: red;"></span><br><br>
+
+        <input type="submit" value="add" name="operation">
+        <input type="submit" value="sub" name="operation">
+        <input type="submit" value="div" name="operation">
+        <input type="submit" value="mul" name="operation">
+
+    </form>
+    <script type="text/javascript">
+
+        function validateData(frm)
+        {
+            let n1=frm.num1.value.trim();
+            let n2=frm.num2.value.trim();
+
+            let flag=true;
+            document.getElementById("num1err").innerHTML="";
+            document.getElementById("num2err").innerHTML="";
+            if(n1==""||n1.length==0||isNaN(n1))
+            {
+                flag=false;
+                document.getElementById("num1err").innerHTML="Number is Invalid";
+                frm.num1.focus();
+
+            }
+            else if(n2==""||n2.lenght==0||isNaN(n2))
+            {
+                flag=false;
+                document.getElementById("num2err").innerHTML="Number is invalid"
+                frm.num2.focus();
+            }
+
+            return flag;
+        }
+    </script>
+</body>
+</html>
